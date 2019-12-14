@@ -153,8 +153,8 @@ class MainWindow(Tk):
         self.shutdowntabs.pack(expand=1, fill='both')
 
     def init_statusbar(self):
+        self.status_msg_base_text = 'this is the status bar!'
         self.status_msg_text = StringVar()
-        self.status_msg_text.set('this is the status bar!')
         self.status_label = Label(self, textvariable=self.status_msg_text,
                              relief=tk.GROOVE, padx=3, pady=3, anchor=tk.W
                              )
@@ -166,7 +166,7 @@ class MainWindow(Tk):
         newtime = time.strftime('%H:%M:%S')
         if newtime != self.time:
             self.time = newtime
-            self.status_msg_text.set(f'this is the status bar! - {self.time}')
+            self.status_msg_text.set(f'{self.status_msg_base_text} - {self.time}')
         self.status_label.after(200, self.tick)
 
 
